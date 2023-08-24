@@ -15,27 +15,31 @@ class _TerceiraTelaState extends State<TerceiraTela> {
 
   double result = 0;
 
-  void Sum(){
+  void Sum() {
     setState(() {
-      result = (double.tryParse(_value1.text) ?? 0.0) + (double.tryParse(_value2.text) ?? 0.0);
+      result = (double.tryParse(_value1.text) ?? 0.0) +
+          (double.tryParse(_value2.text) ?? 0.0);
     });
   }
 
-  void Sub(){
+  void Sub() {
     setState(() {
-      result = (double.tryParse(_value1.text) ?? 0.0) - (double.tryParse(_value2.text) ?? 0.0);
+      result = (double.tryParse(_value1.text) ?? 0.0) -
+          (double.tryParse(_value2.text) ?? 0.0);
     });
   }
 
-  void Div(){
+  void Div() {
     setState(() {
-      result = (double.tryParse(_value1.text) ?? 0.0) / (double.tryParse(_value2.text) ?? 0.0);
+      result = (double.tryParse(_value1.text) ?? 0.0) /
+          (double.tryParse(_value2.text) ?? 0.0);
     });
   }
 
-  void Mult(){
+  void Mult() {
     setState(() {
-      result = (double.tryParse(_value1.text) ?? 0.0) * (double.tryParse(_value2.text) ?? 0.0);
+      result = (double.tryParse(_value1.text) ?? 0.0) *
+          (double.tryParse(_value2.text) ?? 0.0);
     });
   }
 
@@ -43,7 +47,7 @@ class _TerceiraTelaState extends State<TerceiraTela> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Drawer(
-        child:  ListView(
+        child: ListView(
           //teste de comentario
           //padding: EdgeInsets.zero,
           children: [
@@ -53,13 +57,13 @@ class _TerceiraTelaState extends State<TerceiraTela> {
               ),
               child: Text('Drawer Header'),
             ),
-
             ListTile(
               title: const Text('Item 1'),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const MyHomePage(title: "navegou")),
+                  MaterialPageRoute(
+                      builder: (context) => const MyHomePage(title: "navegou")),
                 );
               },
             ),
@@ -68,7 +72,9 @@ class _TerceiraTelaState extends State<TerceiraTela> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const TerceiraTela(title: "navegou")),
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          const TerceiraTela(title: "navegou")),
                 );
               },
             ),
@@ -77,7 +83,9 @@ class _TerceiraTelaState extends State<TerceiraTela> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const TerceiraTela(title: "Calculadora")),
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          const TerceiraTela(title: "Calculadora")),
                 );
               },
             ),
@@ -92,86 +100,90 @@ class _TerceiraTelaState extends State<TerceiraTela> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-
             //Valor 1
             TextFormField(
               controller: _value1,
               decoration: const InputDecoration(
                   enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
-                          width: 1,
-                          color: Colors.white60
-                      )
-                  ),
+                      borderSide: BorderSide(width: 1, color: Colors.white60)),
                   hintText: "First number",
-                  icon: Icon(Icons.numbers, color: Colors.lightBlueAccent,)
-              ),
+                  icon: Icon(
+                    Icons.numbers,
+                    color: Colors.lightBlueAccent,
+                  )),
               keyboardType: TextInputType.number,
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             //Valor 2
             TextFormField(
               controller: _value2,
               decoration: const InputDecoration(
                   enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
-                          width: 1,
-                          color: Colors.white60
-                      )
-                  ),
+                      borderSide: BorderSide(width: 1, color: Colors.white60)),
                   hintText: "Second number",
-                  icon: Icon(Icons.numbers, color: Colors.lightBlueAccent,)
-              ),
+                  icon: Icon(
+                    Icons.numbers,
+                    color: Colors.lightBlueAccent,
+                  )),
               keyboardType: TextInputType.number,
             ),
-            SizedBox(height: 20,),
+            SizedBox(
+              height: 20,
+            ),
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              ElevatedButton(
+                  onPressed: () {
+                    Sum();
+                    SizedBox(
+                      height: 10,
+                      width: 10,
+                    );
+                  },
+                  child: const Text("Sum",
+                      style: TextStyle(color: Colors.black, fontSize: 20))),
+              SizedBox(
+                width: 10,
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    Div();
+                  },
+                  child: const Text("Divide",
+                      style: TextStyle(color: Colors.black, fontSize: 20))),
+            ]),
+            SizedBox(
+              height: 10,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children:[
-              ElevatedButton(onPressed: () {
-                Sum();
+              children: [
+                ElevatedButton(
+                    onPressed: () {
+                      Sub();
+                    },
+                    child: const Text("Subtract",
+                        style: TextStyle(color: Colors.black, fontSize: 20))),
+                SizedBox(
+                  width: 10,
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      Mult();
+                    },
+                    child: const Text("Multiply",
+                        style: TextStyle(color: Colors.black, fontSize: 20))),
                 SizedBox(
                   height: 10,
-                  width: 10,
-                );
-              },
-                  child: const Text("Sum",
-                      style: TextStyle(color: Colors.black,
-                          fontSize: 20))),
-                SizedBox(width: 10,),
-
-              ElevatedButton(onPressed: () {
-                Div();
-              },
-                  child: const Text("Divide",
-                      style: TextStyle(color: Colors.black,
-                          fontSize: 20))),
-
-              ]
+                ),
+              ],
             ),
-            SizedBox(height: 10,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(onPressed: () {
-                    Sub();
-                  },
-                      child: const Text("Subtract",
-                          style: TextStyle(color: Colors.black,
-                              fontSize: 20))),
-                  SizedBox(width: 10,),
-
-                  ElevatedButton(onPressed: () {
-                    Mult();
-                  },
-                      child: const Text("Multiply",
-                          style: TextStyle(color: Colors.black,
-                              fontSize: 20))),
-                  SizedBox(height: 10,),
-                ],
-              ),
-            SizedBox(height: 20,),
-            Text("Resultado: $result", style: TextStyle(color: Colors.red, fontSize: 30))
+            SizedBox(
+              height: 20,
+            ),
+            Text("Resultado: $result",
+                style: TextStyle(color: Colors.red, fontSize: 30))
           ],
         ),
       ),
